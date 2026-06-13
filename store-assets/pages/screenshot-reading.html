@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Words screenshot — reading</title>
+    <link rel="stylesheet" href="{{WORD_CARD_CSS}}" />
+    <style>
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1280px;
+        height: 800px;
+        overflow: hidden;
+        background: #f3f4f6;
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      .browser {
+        width: 1180px;
+        height: 720px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .chrome-bar {
+        height: 40px;
+        background: #e8eaed;
+        border-bottom: 1px solid #dadce0;
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        gap: 8px;
+      }
+      .dot { width: 10px; height: 10px; border-radius: 50%; }
+      .dot.red { background: #ff5f57; }
+      .dot.yellow { background: #febc2e; }
+      .dot.green { background: #28c840; }
+      .address {
+        flex: 1;
+        margin-left: 8px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 6px 14px;
+        font: 13px system-ui, sans-serif;
+        color: #5f6368;
+      }
+      .article {
+        flex: 1;
+        padding: 48px 72px;
+        font-size: 22px;
+        line-height: 1.65;
+        color: #1a1a1a;
+        position: relative;
+      }
+      .highlight {
+        background: #c4b5fd;
+        padding: 0 2px;
+        border-radius: 2px;
+      }
+      .card-wrap {
+        position: absolute;
+        top: 108px;
+        right: 72px;
+        z-index: 2;
+      }
+      .card-wrap .words-card {
+        animation: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="browser">
+      <div class="chrome-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <div class="address">kidsbookreview.com.au — book review</div>
+      </div>
+      <div class="article">
+        <p>
+          <em>Don't Hug That Quokka!</em> is a hilarious and lighthearted look at consent.
+          Quokkas are cute and cuddly, but does it <span class="highlight">want</span> a hug?
+          This book helps kids understand boundaries in a fun, memorable way.
+        </p>
+        <div class="card-wrap">
+          <div class="words-card">
+            <div class="words-card-header">
+              <span class="words-card-title">want</span>
+              <div class="words-card-actions">
+                <button class="words-btn-icon words-btn-add" type="button">+</button>
+                <button class="words-btn-icon" type="button" aria-label="Pronounce">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <button class="words-btn-icon" type="button" aria-label="Close">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="words-phonetic">/wɒnt/</div>
+            <div class="words-card-body">
+              <div class="words-tabs">
+                <button class="words-tab words-tab-active" type="button">Def</button>
+                <button class="words-tab" type="button">Syn</button>
+                <button class="words-tab" type="button">Ant</button>
+                <button class="words-tab" type="button">Use</button>
+              </div>
+              <div class="words-tab-panel">
+                <div class="words-def-stack">
+                  <div class="words-def-block">
+                    <div class="words-pos">noun</div>
+                    <div>A desire, wish, longing.</div>
+                  </div>
+                  <div class="words-def-block">
+                    <div class="words-pos">noun</div>
+                    <div>(often followed by of) Lack, absence.</div>
+                  </div>
+                  <div class="words-def-block">
+                    <div class="words-pos">noun</div>
+                    <div>Poverty.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

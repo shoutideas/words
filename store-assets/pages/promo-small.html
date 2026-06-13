@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Words promo small</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 440px;
+        height: 280px;
+        overflow: hidden;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: linear-gradient(135deg, #366cc7 0%, #5b8fd9 55%, #7eb0e8 100%);
+      }
+      .tile {
+        width: 440px;
+        height: 280px;
+        padding: 24px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: #fff;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .brand h1 {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .brand span {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+      .tagline {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.2;
+        max-width: 320px;
+      }
+      .sub {
+        font-size: 14px;
+        opacity: 0.92;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tile">
+      <div class="brand">
+        <img src="{{LOGO}}" alt="" />
+        <div>
+          <h1>Words</h1>
+          <span>by Funthinkers.com</span>
+        </div>
+      </div>
+      <div>
+        <p class="tagline">Learn words while you read</p>
+        <p class="sub">Free Chrome extension for families</p>
+      </div>
+    </div>
+  </body>
+</html>
