@@ -3,23 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Words</title>
+    <title>Words by Funthinkers.com</title>
     <link rel="stylesheet" href="../styles/popup.css" />
+    <link rel="stylesheet" href="../ui/word-card.css" />
   </head>
   <body>
+    <header class="popup-header">
+      <img src="../../assets/ft.png" alt="" class="popup-logo" width="32" height="32" />
+      <div class="popup-header-text">
+        <h1 class="popup-title">Words by Funthinkers.com</h1>
+      </div>
+    </header>
     <div class="popup-search">
-      <input type="text" id="search" placeholder="🔍 Search a word..." autocomplete="off" />
+      <span class="popup-search-icon" aria-hidden="true"></span>
+      <input type="text" id="search" placeholder="Search a word..." autocomplete="off" />
     </div>
     <div id="result" class="popup-result hidden"></div>
     <div id="status" class="popup-loading hidden">Looking up…</div>
     <div id="error" class="popup-error hidden"></div>
-    <div class="popup-section-title" id="saved-title">MY WORDS (0)</div>
-    <ul id="saved-list" class="popup-word-list"></ul>
-    <div id="saved-empty" class="popup-empty hidden">No words saved yet.</div>
-    <div class="popup-actions">
-      <button type="button" class="btn-export" id="export-btn">Export .txt</button>
-      <button type="button" id="clear-btn">Clear all</button>
+    <div id="detail" class="popup-detail hidden">
+      <button type="button" class="popup-back-btn" id="back-btn">← My words</button>
+      <div id="detail-card"></div>
     </div>
+    <div id="saved-section">
+      <div class="popup-section-title" id="saved-title">MY WORDS (0)</div>
+      <ul id="saved-list" class="popup-word-list"></ul>
+      <div id="saved-empty" class="popup-empty hidden">No words saved yet.</div>
+    </div>
+    <footer class="popup-footer">
+      <button type="button" class="popup-export-link" id="export-btn">Export .txt</button>
+    </footer>
     <script type="module" src="./popup.ts"></script>
   </body>
 </html>

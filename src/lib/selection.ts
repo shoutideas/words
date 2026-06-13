@@ -31,41 +31,45 @@ export function extractWordFromSelection(): string | null {
 }
 
 export function extractWordAtPoint(x: number, y: number): string | null {
-  let range: Range | null = null;
+  try {
+    let range: Range | null = null;
 
-  if (document.caretRangeFromPoint) {
-    range = document.caretRangeFromPoint(x, y);
-  } else {
-    const doc = document as Document & {
-      caretPositionFromPoint?: (
-        x: number,
-        y: number,
-      ) => { offsetNode: Node; offset: number } | null;
-    };
-    const pos = doc.caretPositionFromPoint?.(x, y);
-    if (pos) {
-      range = document.createRange();
-      range.setStart(pos.offsetNode, pos.offset);
-      range.collapse(true);
+    if (document.caretRangeFromPoint) {
+      range = document.caretRangeFromPoint(x, y);
+    } else {
+      const doc = document as Document & {
+        caretPositionFromPoint?: (
+          px: number,
+          py: number,
+        ) => { offsetNode: Node; offset: number } | null;
+      };
+      const pos = doc.caretPositionFromPoint?.(x, y);
+      if (pos) {
+        range = document.createRange();
+        range.setStart(pos.offsetNode, pos.offset);
+        range.collapse(true);
+      }
     }
+
+    if (!range) return null;
+
+    const node = range.startContainer;
+    if (node.nodeType !== Node.TEXT_NODE) return null;
+
+    const text = node.textContent ?? '';
+    const offset = range.startOffset;
+
+    let start = offset;
+    let end = offset;
+
+    while (start > 0 && /[a-zA-Z'-]/.test(text[start - 1])) start--;
+    while (end < text.length && /[a-zA-Z'-]/.test(text[end])) end++;
+
+    const word = normalizeWord(text.slice(start, end));
+    return isValidWord(word) ? word : null;
+  } catch {
+    return null;
   }
-
-  if (!range) return null;
-
-  const node = range.startContainer;
-  if (node.nodeType !== Node.TEXT_NODE) return null;
-
-  const text = node.textContent ?? '';
-  const offset = range.startOffset;
-
-  let start = offset;
-  let end = offset;
-
-  while (start > 0 && /[a-zA-Z'-]/.test(text[start - 1])) start--;
-  while (end < text.length && /[a-zA-Z'-]/.test(text[end])) end++;
-
-  const word = normalizeWord(text.slice(start, end));
-  return isValidWord(word) ? word : null;
 }
 
 export type SelectionResult =

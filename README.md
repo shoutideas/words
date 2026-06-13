@@ -1,4 +1,4 @@
-# Words
+# Words by Funthinkers.com
 
 Look up, learn, and collect vocabulary while you read on any website.
 
@@ -6,7 +6,7 @@ Look up, learn, and collect vocabulary while you read on any website.
 
 - **Highlight or double-click** any word to open a floating lookup card
 - **Definitions, synonyms, antonyms**, and example sentences
-- **Pronunciation** via your system voice (🔊)
+- **Pronunciation** via dictionary audio, with browser speech as fallback (🔊)
 - **Add words** with the `+` icon (toggles to ✓ when saved)
 - **Toolbar popup** for manual search, saved-word review, and export
 - **Export .txt** — download your word list anytime
@@ -52,10 +52,17 @@ npm run zip      # Build + zip dist/ for Chrome Web Store upload
 - [ ] `+` adds word; `✓` removes; no "Save" text anywhere
 - [ ] Syn / Ant / Use tabs and ↻ sentence refresh
 - [ ] 🔊 pronunciation
-- [ ] Popup search, saved list, Export .txt, Clear all
+- [ ] Popup search, saved list, Export .txt
 - [ ] Context menu lookup
 - [ ] API miss → "Word not found"
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
+
+## Brand assets
+
+`public/assets/ft.png` and extension icons that incorporate the FunThinkers logo
+are © [FunThinkers](https://funthinkers.com). They are included in this
+repository for use with the Words extension and may be redistributed as part of
+this project.
