@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Words</title>
+    <link rel="stylesheet" href="../styles/popup.css" />
+  </head>
+  <body>
+    <div class="popup-search">
+      <input type="text" id="search" placeholder="🔍 Search a word..." autocomplete="off" />
+    </div>
+    <div id="result" class="popup-result hidden"></div>
+    <div id="status" class="popup-loading hidden">Looking up…</div>
+    <div id="error" class="popup-error hidden"></div>
+    <div class="popup-section-title" id="saved-title">MY WORDS (0)</div>
+    <ul id="saved-list" class="popup-word-list"></ul>
+    <div id="saved-empty" class="popup-empty hidden">No words saved yet.</div>
+    <div class="popup-actions">
+      <button type="button" class="btn-export" id="export-btn">Export .txt</button>
+      <button type="button" id="clear-btn">Clear all</button>
+    </div>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>
