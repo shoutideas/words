@@ -42,11 +42,4 @@ export type ContextLookupMessage = {
   text: string;
 };
 
-export type PingMessage = { type: 'PING' };
-
-export type EnsureContentMessage = {
-  type: 'ENSURE_CONTENT';
-  tabId: number;
-};
-
 export const STORAGE_KEY = 'savedWords';
