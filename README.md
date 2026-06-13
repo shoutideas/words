@@ -1,4 +1,4 @@
-# Words
+# Words by Funthinkers.com
 
 Look up, learn, and collect vocabulary while you read on any website.
 

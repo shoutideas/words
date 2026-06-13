@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Words",
-  "version": "1.0.0",
+  "name": "Words by Funthinkers.com",
+  "version": "1.1.3",
   "description": "Look up, learn, and collect words while you read.",
   "permissions": ["storage", "contextMenus"],
   "host_permissions": ["<all_urls>"],
@@ -21,7 +21,7 @@
     {
       "matches": ["<all_urls>"],
       "js": ["src/content/index.ts"],
-      "css": ["src/styles/card.css"]
+      "css": ["src/ui/word-card.css"]
     }
   ],
   "icons": {
