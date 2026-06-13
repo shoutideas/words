@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Words screenshot — popup</title>
+    <link rel="stylesheet" href="{{POPUP_CSS}}" />
+    <link rel="stylesheet" href="{{WORD_CARD_CSS}}" />
+    <style>
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1280px;
+        height: 800px;
+        overflow: hidden;
+        background: linear-gradient(145deg, #e8f0fc 0%, #f8fafc 45%, #eef2ff 100%);
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .scene {
+        width: 1280px;
+        height: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 48px;
+        padding: 48px;
+      }
+      .copy {
+        max-width: 420px;
+        color: #1e3a5f;
+      }
+      .copy h2 {
+        margin: 0 0 12px;
+        font-size: 36px;
+        line-height: 1.15;
+        color: #366cc7;
+      }
+      .copy p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.55;
+        color: #475569;
+      }
+      .popup-frame {
+        width: 380px;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 24px 64px rgba(54, 108, 199, 0.18);
+        overflow: hidden;
+      }
+      .popup-frame body,
+      .popup-frame .popup-inner {
+        width: 380px;
+      }
+      .popup-inner .popup-search,
+      .popup-inner #saved-section,
+      .popup-inner .popup-footer {
+        display: none !important;
+      }
+      .popup-inner .popup-detail {
+        display: block !important;
+      }
+      .words-card-embedded .words-card-body {
+        max-height: 420px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="copy">
+        <h2>Build vocabulary while they read</h2>
+        <p>
+          Search saved words, review definitions, and export a study list.
+          All from the Words toolbar popup.
+        </p>
+      </div>
+      <div class="popup-frame">
+        <div class="popup-inner">
+          <header class="popup-header">
+            <img src="{{LOGO}}" alt="" class="popup-logo" width="32" height="32" />
+            <div class="popup-header-text">
+              <h1 class="popup-title">Words by Funthinkers.com</h1>
+            </div>
+          </header>
+          <div class="popup-detail">
+            <button type="button" class="popup-back-btn">← My words</button>
+            <div class="words-card words-card-embedded">
+              <div class="words-card-header">
+                <span class="words-card-title">review</span>
+                <div class="words-card-actions">
+                  <button class="words-btn-icon words-btn-added" type="button">✓</button>
+                  <button class="words-btn-icon" type="button" aria-label="Pronounce">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="words-phonetic">/rɪˈvjuː/</div>
+              <div class="words-card-body">
+                <div class="words-tabs">
+                  <button class="words-tab words-tab-active" type="button">Def</button>
+                  <button class="words-tab" type="button">Syn</button>
+                  <button class="words-tab" type="button">Ant</button>
+                  <button class="words-tab" type="button">Use</button>
+                </div>
+                <div class="words-tab-panel">
+                  <div class="words-def-stack">
+                    <div class="words-def-block">
+                      <div class="words-pos">noun</div>
+                      <div>A second or subsequent reading of a text or artifact in an attempt to gain new insights.</div>
+                    </div>
+                    <div class="words-def-block">
+                      <div class="words-pos">noun</div>
+                      <div>An account intended as a critical evaluation of a text or a piece of work.</div>
+                    </div>
+                    <div class="words-def-block">
+                      <div class="words-pos">noun</div>
+                      <div>A judicial reassessment of a case or an event.</div>
+                    </div>
+                    <div class="words-def-block">
+                      <div class="words-pos">noun</div>
+                      <div>A stage show made up of topical sketches etc.</div>
+                    </div>
+                    <div class="words-def-block">
+                      <div class="words-pos">noun</div>
+                      <div>A survey of the available items or material.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Words promo marquee</title>
+    <link rel="stylesheet" href="{{WORD_CARD_CSS}}" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 1400px;
+        height: 560px;
+        overflow: hidden;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: linear-gradient(120deg, #1e4a8c 0%, #366cc7 40%, #6ba3e8 100%);
+      }
+      .marquee {
+        width: 1400px;
+        height: 560px;
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        align-items: center;
+        gap: 40px;
+        padding: 56px 72px;
+        color: #fff;
+      }
+      .copy h1 {
+        font-size: 52px;
+        line-height: 1.08;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+      .copy .from {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        opacity: 0.95;
+      }
+      .copy .from img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .copy p {
+        font-size: 22px;
+        line-height: 1.5;
+        max-width: 620px;
+        opacity: 0.94;
+      }
+      .preview .words-card {
+        animation: none;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="marquee">
+      <div class="copy">
+        <div class="from">
+          <img src="{{LOGO}}" alt="" />
+          <span>Words by Funthinkers.com</span>
+        </div>
+        <h1>Look up any word.<br />Save the ones that stick.</h1>
+        <p>
+          Double-click while reading online. Definitions, synonyms, and pronunciation.
+          Built for kids who scroll and parents who care about vocab.
+        </p>
+      </div>
+      <div class="preview">
+        <div class="words-card">
+          <div class="words-card-header">
+            <span class="words-card-title">ephemeral</span>
+            <div class="words-card-actions">
+              <button class="words-btn-icon words-btn-add" type="button">+</button>
+              <button class="words-btn-icon" type="button" aria-label="Pronounce">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="words-phonetic">/ɪˈfem(ə)rəl/</div>
+          <div class="words-card-body">
+            <div class="words-tabs">
+              <button class="words-tab words-tab-active" type="button">Def</button>
+              <button class="words-tab" type="button">Syn</button>
+              <button class="words-tab" type="button">Ant</button>
+              <button class="words-tab" type="button">Use</button>
+            </div>
+            <div class="words-tab-panel">
+              <div class="words-def-block">
+                <div class="words-pos">adjective</div>
+                <div>Lasting for a very short time.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
