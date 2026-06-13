@@ -221,4 +221,15 @@ document.addEventListener('words:saved-change', () => {
   if (detailLookup) void detailCard?.showLookup(detailLookup);
 });
 
+async function enableOnActiveTab(): Promise<void> {
+  try {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tab?.id || !tab.url || !/^https?:/i.test(tab.url)) return;
+    await chrome.runtime.sendMessage({ type: 'ENSURE_CONTENT', tabId: tab.id });
+  } catch {
+    // Popup opened on a restricted page, or extension context invalidated.
+  }
+}
+
 void renderSavedList();
+void enableOnActiveTab();
