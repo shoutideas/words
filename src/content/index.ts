@@ -114,12 +114,7 @@ document.addEventListener(
   true,
 );
 
-chrome.runtime.onMessage.addListener((message: ContextLookupMessage | { type: 'PING' }, _sender, sendResponse) => {
-  if (message.type === 'PING') {
-    sendResponse({ ok: true });
-    return true;
-  }
-
+chrome.runtime.onMessage.addListener((message: ContextLookupMessage) => {
   try {
     if (message.type !== 'CONTEXT_LOOKUP') return;
 

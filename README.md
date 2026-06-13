@@ -43,7 +43,7 @@ npm run zip      # Build + zip dist/ for Chrome Web Store upload
 5. Permissions justification:
    - `storage` — persist saved words locally
    - `contextMenus` — right-click lookup
-   - `activeTab` + `scripting` — inject lookup UI on the current tab after you open the popup or use the context menu
+   - `<all_urls>` — content script runs on pages you read
 
 ## Testing checklist
 
