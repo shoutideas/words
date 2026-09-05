@@ -16,6 +16,9 @@ export interface DefinitionEntry {
   antonyms: string[];
 }
 
+export const LOOKUP_TIMEOUT_SECONDS = 10;
+export const LOOKUP_TIMEOUT_MS = LOOKUP_TIMEOUT_SECONDS * 1000;
+
 export interface WordLookup {
   word: string;
   phonetic?: string;

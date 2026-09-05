@@ -9,10 +9,16 @@
   </head>
   <body>
     <header class="popup-header">
-      <img src="../../assets/ft.png" alt="" class="popup-logo" width="32" height="32" />
-      <div class="popup-header-text">
-        <h1 class="popup-title">Words by Funthinkers.com</h1>
-      </div>
+      <a
+        href="https://www.funthinkers.com/?utm_source=words_extension&amp;utm_medium=extension&amp;utm_campaign=brand_home"
+        class="popup-brand"
+        id="brand-link"
+      >
+        <img src="../../assets/ft.png" alt="" class="popup-logo" width="32" height="32" />
+        <div class="popup-header-text">
+          <h1 class="popup-title">Words by Funthinkers.com</h1>
+        </div>
+      </a>
     </header>
     <div class="popup-search">
       <span class="popup-search-icon" aria-hidden="true"></span>
@@ -28,9 +34,21 @@
     <div id="saved-section">
       <div class="popup-section-title" id="saved-title">MY WORDS (0)</div>
       <ul id="saved-list" class="popup-word-list"></ul>
-      <div id="saved-empty" class="popup-empty hidden">No words saved yet.</div>
+      <div id="saved-empty" class="popup-empty hidden">
+        No words saved yet.
+        <a
+          href="https://www.funthinkers.com/?utm_source=words_extension&amp;utm_medium=extension&amp;utm_campaign=brand_home"
+          class="popup-empty-link"
+          id="empty-link"
+        >Try free puzzles and lessons on FunThinkers</a>
+      </div>
     </div>
     <footer class="popup-footer">
+      <a
+        href="https://www.funthinkers.com/puzzles/reading?utm_source=words_extension&amp;utm_medium=extension&amp;utm_campaign=puzzles_crosssell"
+        class="popup-export-link"
+        id="puzzles-link"
+      >Try FunThinkers puzzles</a>
       <button type="button" class="popup-export-link" id="export-btn">Export .txt</button>
     </footer>
     <script type="module" src="./popup.ts"></script>

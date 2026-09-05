@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Words by Funthinkers.com",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Look up, learn, and collect words while you read.",
   "permissions": ["storage", "contextMenus"],
   "host_permissions": ["<all_urls>"],

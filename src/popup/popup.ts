@@ -17,6 +17,9 @@ const savedList = document.getElementById('saved-list') as HTMLUListElement;
 const savedEmpty = document.getElementById('saved-empty') as HTMLDivElement;
 const exportBtn = document.getElementById('export-btn') as HTMLButtonElement;
 const searchIconEl = document.querySelector('.popup-search-icon') as HTMLSpanElement;
+const brandLink = document.getElementById('brand-link') as HTMLAnchorElement;
+const emptyLink = document.getElementById('empty-link') as HTMLAnchorElement;
+const puzzlesLink = document.getElementById('puzzles-link') as HTMLAnchorElement;
 
 let resultCard: WordCard | null = null;
 let detailCard: WordCard | null = null;
@@ -137,20 +140,19 @@ async function doSearch(word: string): Promise<void> {
 
   showListView();
   hideAll();
-  statusEl.classList.remove('hidden');
+  const card = ensureResultCard();
+  resultEl.classList.remove('hidden');
+  card.showLoading();
 
   try {
     const result = await lookupWord(trimmed);
     if (!result) {
-      showError('Word not found');
+      card.showError('Word not found');
       return;
     }
-    const card = ensureResultCard();
     await card.showLookup(result);
-    statusEl.classList.add('hidden');
-    resultEl.classList.remove('hidden');
   } catch {
-    showError('Could not load definition. Check your connection.');
+    card.showError('Could not load definition. Check your connection.');
   }
 }
 
@@ -212,6 +214,17 @@ exportBtn.addEventListener('click', async () => {
   const blob = exportWordsToTxt(words);
   downloadTxt(blob);
 });
+
+function openFunThinkersTab(event: MouseEvent): void {
+  event.preventDefault();
+  const href = (event.currentTarget as HTMLAnchorElement).href;
+  if (!href) return;
+  void chrome.tabs.create({ url: href });
+}
+
+brandLink.addEventListener('click', openFunThinkersTab);
+emptyLink.addEventListener('click', openFunThinkersTab);
+puzzlesLink.addEventListener('click', openFunThinkersTab);
 
 document.addEventListener('words:saved-change', () => {
   void renderSavedList();

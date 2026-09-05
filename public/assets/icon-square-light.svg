@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="FunThinkers">
+  <title>FunThinkers</title>
+  <defs>
+    <clipPath id="ft-ground-il"><rect x="0" y="0" width="64" height="58"/></clipPath>
+  </defs>
+  <rect width="512" height="512" fill="#F2F7FF"/>
+  <g transform="translate(84.8 90.1) scale(5.3)">
+    <rect x="4" y="42" width="16" height="16" rx="3.5" fill="#70C4A5"/>
+    <g fill="#2B2191">
+      <circle cx="7.6" cy="45.6" r="1.55"/>
+      <circle cx="16.4" cy="45.6" r="1.55"/>
+      <circle cx="12" cy="50" r="1.55"/>
+      <circle cx="7.6" cy="54.4" r="1.55"/>
+      <circle cx="16.4" cy="54.4" r="1.55"/>
+    </g>
+    <rect x="24" y="28" width="15" height="14" rx="3" fill="#EF7C9B"/>
+    <rect x="24" y="43.5" width="15" height="14.5" rx="3" fill="#E2537D"/>
+    <g clip-path="url(#ft-ground-il)" transform="rotate(9 49 58)">
+      <path d="M49 4 55 22H43z" fill="#DCA53C"/>
+      <path d="M49 4 52 13H46z" fill="#2B2191"/>
+      <path d="M43 22h12v42H43z" fill="#366CC7"/>
+    </g>
+  </g>
+</svg>

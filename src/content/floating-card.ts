@@ -1,4 +1,8 @@
-import type { LookupMessage, LookupResponse } from '../lib/types';
+import {
+  LOOKUP_TIMEOUT_MS,
+  type LookupMessage,
+  type LookupResponse,
+} from '../lib/types';
 import {
   CONTEXT_INVALIDATED_MESSAGE,
   isContextInvalidatedError,
@@ -167,12 +171,24 @@ export class FloatingCard {
     }
 
     return new Promise((resolve) => {
+      let settled = false;
+      const finish = (response: LookupResponse) => {
+        if (settled) return;
+        settled = true;
+        resolve(response);
+      };
+
+      const timer = setTimeout(() => {
+        finish({ ok: false, error: 'network' });
+      }, LOOKUP_TIMEOUT_MS);
+
       try {
         const message: LookupMessage = { type: 'LOOKUP', word };
         chrome.runtime.sendMessage(message, (response: LookupResponse) => {
+          clearTimeout(timer);
           const lastError = chrome.runtime.lastError;
           if (lastError) {
-            resolve({
+            finish({
               ok: false,
               error: isContextInvalidatedError(lastError.message)
                 ? 'context_invalidated'
@@ -181,13 +197,14 @@ export class FloatingCard {
             return;
           }
           if (!response) {
-            resolve({ ok: false, error: 'network' });
+            finish({ ok: false, error: 'network' });
             return;
           }
-          resolve(response);
+          finish(response);
         });
       } catch {
-        resolve({ ok: false, error: 'context_invalidated' });
+        clearTimeout(timer);
+        finish({ ok: false, error: 'context_invalidated' });
       }
     });
   }
