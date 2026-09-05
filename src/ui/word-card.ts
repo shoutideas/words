@@ -1,4 +1,7 @@
-import type { WordLookup } from '../lib/types';
+import {
+  LOOKUP_TIMEOUT_SECONDS,
+  type WordLookup,
+} from '../lib/types';
 import { speakWord } from '../lib/pronounce';
 import { addWord, isWordSaved, removeWord } from '../lib/storage';
 import { iconClose, iconRefresh, iconSpeaker } from './icons';
@@ -22,6 +25,7 @@ export class WordCard {
   private activeTab: TabId = 'def';
   private exampleIndex = 0;
   private saved = false;
+  private loadingTimer: ReturnType<typeof setInterval> | null = null;
 
   constructor(mount: HTMLElement, options: WordCardOptions) {
     this.root = mount;
@@ -36,11 +40,19 @@ export class WordCard {
   }
 
   showLoading(): void {
+    this.stopLoadingTimer();
     this.lookup = null;
-    this.card.innerHTML = `<div class="words-loading">Looking up…</div>`;
+    let remaining = LOOKUP_TIMEOUT_SECONDS;
+    this.renderLoading(remaining);
+    this.loadingTimer = setInterval(() => {
+      remaining = Math.max(0, remaining - 1);
+      this.updateCountdown(remaining);
+      if (remaining === 0) this.stopLoadingTimer();
+    }, 1000);
   }
 
   showError(message: string): void {
+    this.stopLoadingTimer();
     this.lookup = null;
     const closeBtn =
       this.options.mode !== 'embedded'
@@ -54,6 +66,7 @@ export class WordCard {
   }
 
   async showLookup(lookup: WordLookup): Promise<void> {
+    this.stopLoadingTimer();
     this.lookup = lookup;
     this.activeTab = 'def';
     this.exampleIndex = 0;
@@ -62,7 +75,35 @@ export class WordCard {
   }
 
   destroy(): void {
+    this.stopLoadingTimer();
     this.root.innerHTML = '';
+  }
+
+  private stopLoadingTimer(): void {
+    if (!this.loadingTimer) return;
+    clearInterval(this.loadingTimer);
+    this.loadingTimer = null;
+  }
+
+  private renderLoading(remaining: number): void {
+    this.card.innerHTML = `
+      <div class="words-loading" role="status" aria-live="polite" aria-label="Looking up. ${remaining} seconds remaining">
+        <div>Looking up…</div>
+        <div class="words-loading-countdown"><span data-countdown>${remaining}</span>s</div>
+      </div>
+    `;
+  }
+
+  private updateCountdown(remaining: number): void {
+    const countdown = this.card.querySelector('[data-countdown]');
+    const status = this.card.querySelector('.words-loading');
+    if (countdown) countdown.textContent = String(remaining);
+    if (status) {
+      status.setAttribute(
+        'aria-label',
+        `Looking up. ${remaining} seconds remaining`,
+      );
+    }
   }
 
   private cardClassName(): string {

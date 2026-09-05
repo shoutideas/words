@@ -16,6 +16,9 @@ export interface DefinitionEntry {
   antonyms: string[];
 }
 
+export const LOOKUP_TIMEOUT_SECONDS = 10;
+export const LOOKUP_TIMEOUT_MS = LOOKUP_TIMEOUT_SECONDS * 1000;
+
 export interface WordLookup {
   word: string;
   phonetic?: string;
@@ -40,13 +43,6 @@ export type LookupResponse =
 export type ContextLookupMessage = {
   type: 'CONTEXT_LOOKUP';
   text: string;
-};
-
-export type PingMessage = { type: 'PING' };
-
-export type EnsureContentMessage = {
-  type: 'ENSURE_CONTENT';
-  tabId: number;
 };
 
 export const STORAGE_KEY = 'savedWords';

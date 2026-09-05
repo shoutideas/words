@@ -286,6 +286,15 @@ button.words-chip:hover {
   font-size: 14px;
 }
 
+.words-loading-countdown {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #366cc7;
+  letter-spacing: 0.02em;
+}
+
 .words-toast {
   position: absolute;
   bottom: -36px;

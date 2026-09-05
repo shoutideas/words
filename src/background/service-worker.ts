@@ -1,10 +1,5 @@
 import { lookupWord } from '../lib/dictionary';
-import { ensureContentScript } from '../lib/inject-content';
-import type {
-  EnsureContentMessage,
-  LookupMessage,
-  LookupResponse,
-} from '../lib/types';
+import type { LookupMessage, LookupResponse } from '../lib/types';
 
 const CONTEXT_MENU_ID = 'words-lookup';
 
@@ -23,28 +18,18 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   const text = info.selectionText?.trim();
   if (!text) return;
 
-  void (async () => {
-    await ensureContentScript(tab.id!);
-    await chrome.tabs.sendMessage(tab.id!, {
-      type: 'CONTEXT_LOOKUP',
-      text,
-    });
-  })();
+  chrome.tabs.sendMessage(tab.id, {
+    type: 'CONTEXT_LOOKUP',
+    text,
+  });
 });
 
 chrome.runtime.onMessage.addListener(
   (
-    message: LookupMessage | EnsureContentMessage,
+    message: LookupMessage,
     _sender,
-    sendResponse: (response: LookupResponse | { ok: true }) => void,
+    sendResponse: (response: LookupResponse) => void,
   ) => {
-    if (message.type === 'ENSURE_CONTENT') {
-      ensureContentScript(message.tabId)
-        .then(() => sendResponse({ ok: true }))
-        .catch(() => sendResponse({ ok: true }));
-      return true;
-    }
-
     if (message.type !== 'LOOKUP') return false;
 
     lookupWord(message.word)

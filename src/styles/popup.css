@@ -42,6 +42,19 @@ body.popup-expanded .popup-detail {
   background: #ffffff;
 }
 
+.popup-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.popup-brand:hover .popup-title {
+  text-decoration: underline;
+}
+
 .popup-logo {
   width: 32px;
   height: 32px;
@@ -135,7 +148,10 @@ body.popup-expanded .popup-detail {
 .popup-footer {
   padding: 8px 14px 12px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
 .popup-export-link {
@@ -158,6 +174,18 @@ body.popup-expanded .popup-detail {
   text-align: center;
   color: #6b7280;
   font-size: 13px;
+}
+
+.popup-empty-link {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #366cc7;
+  text-decoration: none;
+}
+
+.popup-empty-link:hover {
+  text-decoration: underline;
 }
 
 .popup-empty.hidden {
